@@ -1,0 +1,23 @@
+name: app_updates
+description: Allow users keep your app up to date on their devices, they can try new features, as well as benefit from performance improvements and bug fixes.
+version: 1.0.0
+homepage: https://github.com/vinodbaste/app_update.git
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  package_info_plus: ^1.4.3+1
+  http: ^0.13.5
+  html: ^0.15.0-nullsafety.0
+  url_launcher: ^6.1.5
+  collection: ^1.15.0-nullsafety.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
