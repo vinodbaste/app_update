@@ -1,11 +1,9 @@
 
-# App Update Plugin 🎉
+# In-App Update Plugin 🎉
 
 With the help of a this Flutter plugin.
 *Check if a user has the most recent installation of your app.
 *Display a message to the user with a link to the relevant app store page.
-
-
 
 <img src = "https://github.com/vinodbaste/app_update/blob/main/screenshots/android.png" width = 250 height = 500 />
 

@@ -1,4 +1,4 @@
-library app_updates;
+library inapp_updates;
 
 import 'dart:convert';
 import 'dart:io';
