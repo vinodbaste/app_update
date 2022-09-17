@@ -31,4 +31,3 @@ Calling `showUpdateAlert` with your app's `BuildContext` will check if the app c
 
 `appUpdate.showUpdateAlert(context: context);`
 
-"# app_update" 
