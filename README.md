@@ -68,7 +68,7 @@ Calling `showUpdateAlert` with your app's `BuildContext` will check if the app c
       iOSAppStoreCountry: 'in'
   );
   
- # appUpdate.showUpdateAlert(context: context);
+ appUpdate.showUpdateAlert(context: context);
 }
 ```
 
