@@ -74,13 +74,12 @@ Calling `showUpdateAlert` with your app's `BuildContext` will check if the app c
 
 # Platform Support 
 ```
-Platform	Automatically Supported?	
-ANDROID   ✅ Yes	                  
-IOS	      ✅ Yes                   
-LINUX	    ❌ No	                  
-MACOS	    ❌ No	                 
-WEB	      ❌ No	                  
-WINDOWS	  ❌ No	                  
+* ANDROID  ✅ Yes	                  
+* IOS	     ✅ Yes                   
+* LINUX	   ❌ No	                  
+* MACOS	   ❌ No	                 
+* WEB	     ❌ No	                  
+* WINDOWS	 ❌ No	                  
 ```
 
 # License
