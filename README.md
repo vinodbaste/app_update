@@ -5,9 +5,9 @@ With the help of a this Flutter plugin.
 *Check if a user has the most recent installation of your app.
 *Display a message to the user with a link to the relevant app store page.
 
-See more at the [Dart Packages page.](https://pub.dartlang.org/packages/new_version)
 
-![Screenshots](screenshots/android.png)
+
+<img src = "https://github.com/vinodbaste/app_update/blob/main/screenshots/android.png" width = 250 height = 500 />
 
 ## Installation
 Add new_version as [a dependency in your `pubspec.yaml` file.](https://flutter.io/using-packages/)
