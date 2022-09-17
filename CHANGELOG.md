@@ -1,3 +1,3 @@
-## 0.0.1
+## 1.0.0 - 09/17/22
 
-* TODO: Describe initial release.
+* Initial release. API includes `showUpdateAlert` method. Support for iOS and Android.
