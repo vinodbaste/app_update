@@ -1,6 +1,6 @@
 name: app_update_alert
 description: Allow users keep your app up to date on their devices, they can try new features, as well as benefit from performance improvements and bug fixes.
-version: 1.0.3
+version: 1.1.1
 homepage: https://github.com/vinodbaste/app_update.git
 
 environment:

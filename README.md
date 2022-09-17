@@ -16,7 +16,7 @@ With the help of a this Flutter plugin.
 
 See more at the [Dart Packages page.](https://pub.dartlang.org/packages/new_version)
 
-<img src = "https://github.com/vinodbaste/app_update/blob/main/screenshots/android.png" width = 250 height = 500 />
+<img src = "https://github.com/vinodbaste/app_update/raw/main/screenshots/android.png" width = 250 height = 500 />
 
 ## Installation
 Add `app_update_alert` as [a dependency in your `pubspec.yaml` file.](https://flutter.io/using-packages/)
@@ -30,7 +30,7 @@ This will add a line like below to your package's ```pubspec.yaml```
 
 ```
 dependencies:
-  app_update_alert: ^1.1.0
+  app_update_alert: ^1.1.1
 ```
 run an implicit ```flutter pub get```
 
