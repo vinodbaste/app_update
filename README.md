@@ -2,12 +2,13 @@
 # App Update alert Plugin
 ```keep your app users up to date on their devices```
 
-[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![ios support version - 13+](https://img.shields.io/badge/ios_support_version-13%2B-2ea44f)](https://)
+[![android support version - 8+](https://img.shields.io/badge/android_support_version-8%2B-2ea44f)](https://)
 [![GitHub tag](https://img.shields.io/github/tag/vinodbaste/image-compressor?include_prereleases=&sort=semver&color=blue)](https://github.com/vinodbaste/image-compressor/releases/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue)](#license)
 [![News - Android Weekly](https://img.shields.io/badge/News-Android_Weekly-d36f21)](https://androidweekly.net/issues/issue-326)
 [![Story - Medium](https://img.shields.io/badge/Story-Medium-2ea44f)](https://medium.com/codex/image-compressor-13dbfd0445a3)
-[![GitHub - VinodBaste](https://img.shields.io/badge/GitHub-VinodBaste-4664c6)](https://github.com/vinodbaste/Image-compressor)
+[![GitHub - VinodBaste](https://img.shields.io/badge/GitHub-VinodBaste-516cc4)](https://github.com/vinodbaste/app_update#readme)
 
 With the help of a this Flutter plugin.
 * Check if a user has the most recent installation of your app.
@@ -51,18 +52,6 @@ Create an instance of `AppUpdate` in `main.dart` (or wherever your app is initia
 Your Flutter package identification will be used by the plugin automatically to search the app store.
 You can overwrite this identity if your app uses a different one on the Google Play Store or Apple App Store by giving values for `androidPackageName` and/or `iosPackageName.`
 
-```Dart
-@override
-  void initState() {
-    super.initState();
- final appUpdate = AppUpdate(
-      iosPackageName: 'com.your.IOSpackage',
-      androidPackageName: 'com.your.Androidpackage', 
-      iOSAppStoreCountry: 'in'
-  );
-}
-```
-
 *For iOS:* You must specify `iOSAppStoreCountry` to the two-letter country code of the Software Store you want to search if your app is only accessible outside the India. A list of ISO Country Codes can be found at http://en.wikipedia.org/wiki/ISO 3166-1 alpha-2.
 
 
@@ -79,7 +68,7 @@ Calling `showUpdateAlert` with your app's `BuildContext` will check if the app c
       iOSAppStoreCountry: 'in'
   );
   
- `appUpdate.showUpdateAlert(context: context);`
+ # appUpdate.showUpdateAlert(context: context);
 }
 ```
 
