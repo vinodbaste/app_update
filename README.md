@@ -4,10 +4,10 @@
 
 [![ios support version - 13+](https://img.shields.io/badge/ios_support_version-13%2B-2ea44f)](https://)
 [![android support version - 8+](https://img.shields.io/badge/android_support_version-8%2B-2ea44f)](https://)
-[![GitHub tag](https://img.shields.io/github/tag/vinodbaste/image-compressor?include_prereleases=&sort=semver&color=blue)](https://github.com/vinodbaste/image-compressor/releases/)
+![tag - v1.1.0](https://img.shields.io/badge/tag-v1.1.0-516cc4?logo=3a76b8)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue)](#license)
 [![News - Android Weekly](https://img.shields.io/badge/News-Android_Weekly-d36f21)](https://androidweekly.net/issues/issue-326)
-[![Story - Medium](https://img.shields.io/badge/Story-Medium-2ea44f)](https://medium.com/codex/image-compressor-13dbfd0445a3)
+[![Story - Medium](https://img.shields.io/badge/Story-Medium-2ea44f)](https://medium.com/codex/image-compresso-13dbfd0445a3)
 [![GitHub - VinodBaste](https://img.shields.io/badge/GitHub-VinodBaste-516cc4)](https://github.com/vinodbaste/app_update#readme)
 
 With the help of a this Flutter plugin.
