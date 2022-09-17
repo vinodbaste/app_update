@@ -7,8 +7,6 @@ With the help of a this Flutter plugin.
 
 See more at the [Dart Packages page.](https://pub.dartlang.org/packages/new_version)
 
-![Screenshots](screenshots/both.png)
-
 ## Installation
 Add new_version as [a dependency in your `pubspec.yaml` file.](https://flutter.io/using-packages/)
 ```
