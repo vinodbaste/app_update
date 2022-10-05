@@ -30,7 +30,7 @@ This will add a line like below to your package's ```pubspec.yaml```
 
 ```
 dependencies:
-  app_update_alert: ^1.5.0
+  app_update_alert: ^1.5.1
 ```
 run an implicit ```flutter pub get```
 
@@ -56,7 +56,7 @@ You can overwrite this identity if your app uses a different one on the Google P
 
 
 ### Quickstart
-Calling `showUpdateAlert` with your app's `BuildContext` will check if the app can be updated, and will automatically display a platform-specific alert that the user can use to go to the app store.
+Calling showUpdateAlert` with your app's `BuildContext` will check if the app can be updated, and will automatically display a platform-specific alert that the user can use to go to the app store.
 
 ```Dart
 @override
@@ -71,8 +71,11 @@ Calling `showUpdateAlert` with your app's `BuildContext` will check if the app c
  appUpdate.showUpdateAlert(context: context);
 }
 ```
-# Force update test
-Calling `forceAppVersion` with your app's greator version will check if the app can be updated, and will automatically display a platform-specific alert that the user can use to go to the app store.
+*Note:* The parameters such as `iosPackageName`,  `androidPackageName` are non-mandatory fields and can only be overwritten if the app package's differ from store versions.
+
+
+# Force update dialog
+Calling `forceAppVersion` with your app's greater version will check if the app can be updated, and will automatically display a platform-specific alert that the user can use to go to the app store.
 ```Dart
  final appUpdate = AppUpdate(
       iosPackageName: 'com.your.IOSpackage',
@@ -85,10 +88,10 @@ Calling `forceAppVersion` with your app's greator version will check if the app 
 # Platform Support 
 ```
 ANDROID - ✅ Yes	                  
-IOS - ✅ Yes                   
-LINUX - ❌ No	                  
-MACOS - ❌ No	                 
-WEB - ❌ No	                  
+IOS     - ✅ Yes                   
+LINUX   - ❌ No	                  
+MACOS   - ❌ No	                 
+WEB     - ❌ No	                  
 WINDOWS - ❌ No	                  
 ```
 
