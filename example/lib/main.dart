@@ -31,11 +31,12 @@ class MyHomePageState extends State<MyHomePage> {
 
     // Instantiate AppUpdate manager object (Using GCP Console app as example)
     final appUpdate = AppUpdates(
-      iosPackageName: 'com.google.Vespa',
-      androidPackageName: 'com.google.android.apps.cloudconsole',
-      iosAppStoreCountry: 'in'
+        iosPackageName: 'com.google.Vespa',
+        androidPackageName: 'com.google.android.apps.cloudconsole',
+        iosAppStoreCountry: 'in'
     );
 
+    // Instantiate AppUpdate manager object with forceAppVersion
     final forceAppUpdate = AppUpdates(
         iosPackageName: 'com.google.Vespa',
         androidPackageName: 'com.google.android.apps.cloudconsole',
