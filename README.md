@@ -56,7 +56,7 @@ You can overwrite this identity if your app uses a different one on the Google P
 
 
 ### Quickstart
-Calling showUpdateAlert` with your app's `BuildContext` will check if the app can be updated, and will automatically display a platform-specific alert that the user can use to go to the app store.
+Calling `showUpdateAlert` with your app's `BuildContext` will check if the app can be updated, and will automatically display a platform-specific alert that the user can use to go to the app store.
 
 ```Dart
 @override
