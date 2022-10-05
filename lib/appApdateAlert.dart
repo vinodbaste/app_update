@@ -7,9 +7,9 @@ import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
+import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:http/http.dart' as http;
 
 ///Info about the most recent and current versions of the software
 ///that are accessible through the Apple App Store or Google Play Store.
@@ -115,7 +115,7 @@ class AppUpdates {
     return AppVersionStatus._(
       appVersion: _getCleanVersion(packageInfo.version),
       storeVersion:
-      _getCleanVersion(forceAppVersion ?? jsonObj['results'][0]['version']),
+          _getCleanVersion(forceAppVersion ?? jsonObj['results'][0]['version']),
       storeLink: jsonObj['results'][0]['trackViewUrl'],
       releaseNotes: jsonObj['results'][0]['releaseNotes'],
     );
@@ -125,8 +125,8 @@ class AppUpdates {
   Future<AppVersionStatus?> _androidStoreVersion(
       PackageInfo packageInfo) async {
     final id = androidPackageName ?? packageInfo.packageName;
-    final uri =
-    Uri.https("play.google.com", "/store/apps/details", {"id": id, "hl": "en"});
+    final uri = Uri.https(
+        "play.google.com", "/store/apps/details", {"id": id, "hl": "en"});
     final response = await http.get(uri);
     if (response.statusCode != 200) {
       debugPrint('Can\'t find an app in the Play Store with the id: $id');
@@ -140,13 +140,13 @@ class AppUpdates {
     final additionalInfoElements = document.getElementsByClassName('hAyfc');
     if (additionalInfoElements.isNotEmpty) {
       final versionElement = additionalInfoElements.firstWhere(
-            (elm) => elm.querySelector('.BgcNfc')!.text == 'Current Version',
+        (elm) => elm.querySelector('.BgcNfc')!.text == 'Current Version',
       );
       storeVersion = versionElement.querySelector('.htlgb')!.text;
 
       final sectionElements = document.getElementsByClassName('W4P4ne');
       final releaseNotesElement = sectionElements.firstWhereOrNull(
-            (elm) => elm.querySelector('.wSaTQd')!.text == 'What\'s New',
+        (elm) => elm.querySelector('.wSaTQd')!.text == 'What\'s New',
       );
       releaseNotes = releaseNotesElement
           ?.querySelector('.PHBdkd')
@@ -155,17 +155,18 @@ class AppUpdates {
     } else {
       final scriptElements = document.getElementsByTagName('script');
       final infoScriptElement = scriptElements.firstWhere(
-            (elm) => elm.text.contains('key: \'ds:4\''),
+        (elm) => elm.text.contains('key: \'ds:4\''),
       );
 
-      final param = infoScriptElement.text.substring(20, infoScriptElement.text.length - 2)
+      final param = infoScriptElement.text
+          .substring(20, infoScriptElement.text.length - 2)
           .replaceAll('key:', '"key":')
           .replaceAll('hash:', '"hash":')
           .replaceAll('data:', '"data":')
           .replaceAll('sideChannel:', '"sideChannel":')
           .replaceAll('\'', '"');
       final parsed = json.decode(param);
-      final data =  parsed['data'];
+      final data = parsed['data'];
 
       storeVersion = data[1][2][140][0][0][0];
       releaseNotes = data[1][2][144][1][1];
@@ -178,6 +179,7 @@ class AppUpdates {
       releaseNotes: releaseNotes,
     );
   }
+
   /// Shows the user a platform-specific alert about the app update. The user
   /// can dismiss the alert or proceed to the app store.
   ///
@@ -196,8 +198,7 @@ class AppUpdates {
   }) async {
     final dialogTitleWidget = Text(dialogTitle);
     final dialogTextWidget = Text(
-      dialogText ??
-          'Update your app now to latest version and give it a spin!',
+      dialogText ?? 'Update your app now to latest version and give it a spin!',
     );
 
     final updateButtonTextWidget = Text(updateButtonText);
@@ -211,29 +212,29 @@ class AppUpdates {
     List<Widget> actions = [
       Platform.isAndroid
           ? TextButton(
-        onPressed: updateAction,
-        child: updateButtonTextWidget,
-      )
+              onPressed: updateAction,
+              child: updateButtonTextWidget,
+            )
           : CupertinoDialogAction(
-        onPressed: updateAction,
-        child: updateButtonTextWidget,
-      ),
+              onPressed: updateAction,
+              child: updateButtonTextWidget,
+            ),
     ];
 
     if (allowDismissal) {
       final dismissButtonTextWidget = Text(dismissButtonText);
       dismissAction = dismissAction ??
-              () => Navigator.of(context, rootNavigator: true).pop();
+          () => Navigator.of(context, rootNavigator: true).pop();
       actions.add(
         Platform.isAndroid
             ? TextButton(
-          onPressed: dismissAction,
-          child: dismissButtonTextWidget,
-        )
+                onPressed: dismissAction,
+                child: dismissButtonTextWidget,
+              )
             : CupertinoDialogAction(
-          onPressed: dismissAction,
-          child: dismissButtonTextWidget,
-        ),
+                onPressed: dismissAction,
+                child: dismissButtonTextWidget,
+              ),
       );
     }
 
@@ -244,15 +245,15 @@ class AppUpdates {
         return WillPopScope(
             child: Platform.isAndroid
                 ? AlertDialog(
-              title: dialogTitleWidget,
-              content: dialogTextWidget,
-              actions: actions,
-            )
+                    title: dialogTitleWidget,
+                    content: dialogTextWidget,
+                    actions: actions,
+                  )
                 : CupertinoAlertDialog(
-              title: dialogTitleWidget,
-              content: dialogTextWidget,
-              actions: actions,
-            ),
+                    title: dialogTitleWidget,
+                    content: dialogTextWidget,
+                    actions: actions,
+                  ),
             onWillPop: () => Future.value(allowDismissal));
       },
     );
