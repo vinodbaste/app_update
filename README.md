@@ -30,7 +30,7 @@ This will add a line like below to your package's ```pubspec.yaml```
 
 ```
 dependencies:
-  app_update_alert: ^1.5.3
+  app_update_alert: ^1.5.5
 ```
 run an implicit ```flutter pub get```
 
