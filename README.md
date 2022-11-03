@@ -30,7 +30,7 @@ This will add a line like below to your package's ```pubspec.yaml```
 
 ```
 dependencies:
-  app_update_alert: ^1.5.2
+  app_update_alert: ^1.5.3
 ```
 run an implicit ```flutter pub get```
 
@@ -56,7 +56,7 @@ You can overwrite this identity if your app uses a different one on the Google P
 
 
 ### Quickstart
-Calling `showUpdateAlert` with your app's `BuildContext` will check if the app can be updated, and will automatically display a platform-specific alert that the user can use to go to the app store.
+Calling `showUpdateAlert` with your app's `BuildContext` and other optional parameters which will check if the app can be updated, and will automatically display a platform-specific alert that the user can use to go to the app store.
 
 ```Dart
 @override
@@ -68,11 +68,55 @@ Calling `showUpdateAlert` with your app's `BuildContext` will check if the app c
       iOSAppStoreCountry: 'in'
   );
   
+ //showUpdateAlert
  appUpdate.showUpdateAlert(context: context);
 }
 ```
 *Note:* The parameters such as `iosPackageName`,  `androidPackageName` are non-mandatory fields and can only be overwritten if the app package's differ from store versions.
 
+# showUpdateAlert dialog with optional parameters and dialog dismissal
+To change the appearance and behavior of the update dialog, you can `showUpdateAlert`
+optionally provide `dialogTitle: String`, `dialogText: String`, `updateButtonText: String`, `allowDismissal: bool`,
+`dismissButtonText: String`, and `dismissAction: VoidCallback` parameters.
+```Dart
+    appUpdate.showUpdateAlert(context: context,
+                                dialogTitle: dialogTitle,
+                                dialogText: dialogText,
+                                updateButtonText: updateButtonText,
+                                allowDismissal: true,
+                                dismissButtonText: dismissButtonText,
+                                dismissAction: dismissAction
+                              );
+```
+
+# showUpdateAlert dialog without dialog dismissal
+To change the appearance and behavior of the update dialog, you can `showUpdateAlert`
+optionally provide `dialogTitle: String`, `dialogText: String`, `updateButtonText: String`, `allowDismissal: bool`, parameters.
+```Dart
+    appUpdate.showUpdateAlert(context: context,
+                                dialogTitle: dialogTitle,
+                                dialogText: dialogText,
+                                updateButtonText: updateButtonText,
+                                allowDismissal: false,
+                              );
+```
+
+# showUpdateAlert dialog with optional VoidCallback
+When dialog dismissal is allowed and to perform/ execute any functions on `dismissButtonText` or on dialog dismiss use the `dismissAction`.
+```Dart
+    void callBackFunction() {
+      print('dismissAction called');
+    }   
+
+    appUpdate.showUpdateAlert(context: context,
+                                dialogTitle: dialogTitle,
+                                dialogText: dialogText,
+                                updateButtonText: updateButtonText,
+                                allowDismissal: true,
+                                dismissButtonText: dismissButtonText,
+                                dismissAction: callBackFunction()
+                              );
+```
 
 # Force update dialog
 Calling `forceAppVersion` with your app's greater version will check if the app can be updated, and will automatically display a platform-specific alert that the user can use to go to the app store.

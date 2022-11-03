@@ -19,6 +19,13 @@ class AppVersionStatus {
   final String storeLink;
   final String? releaseNotes;
 
+  AppVersionStatus._({
+    required this.appVersion,
+    required this.storeVersion,
+    required this.storeLink,
+    this.releaseNotes,
+  });
+
   /// Returns `true` if the store version of the application is greater than the local version.
   bool get isUpdateAvailable {
     final appLocalVersion = appVersion.split('.').map(int.parse).toList();
@@ -38,13 +45,6 @@ class AppVersionStatus {
     }
     return false;
   }
-
-  AppVersionStatus._({
-    required this.appVersion,
-    required this.storeVersion,
-    required this.storeLink,
-    this.releaseNotes,
-  });
 }
 
 /// An optional value that will force the plugin to always return [forceAppVersion]
@@ -63,12 +63,33 @@ class AppUpdates {
     this.forceAppVersion,
   });
 
-  ///It then shows a platform-specific alert with buttons to ignore the update
-  ///alert or access the app store after checking the version status.
-  showUpdateAlert({required BuildContext context}) async {
+  /// Shows the user a platform-specific alert about the app update. The user
+  /// can dismiss the alert or proceed to the app store.
+  ///
+  /// To change the appearance and behavior of the update dialog, you can
+  /// optionally provide [dialogTitle], [dialogText], [updateButtonText], [allowDismissal],
+  /// [dismissButtonText], and [dismissAction] parameters.
+  showUpdateAlert({required BuildContext context,
+    String? dialogTitle,
+    String? dialogText,
+    String? updateButtonText,
+    bool? allowDismissal,
+    String? dismissButtonText,
+    VoidCallback? dismissAction}) async {
+
     final AppVersionStatus? versionStatus = await _getVersionStatus();
+
     if (versionStatus != null && versionStatus.isUpdateAvailable) {
-      _showUpdateDialog(context: context, versionStatus: versionStatus);
+
+      _showUpdateDialog(
+          context: context,
+          versionStatus: versionStatus,
+          dialogTitle: dialogTitle,
+          dialogText: dialogText,
+          updateButtonText: updateButtonText,
+          allowDismissal: allowDismissal,
+          dismissButtonText: dismissButtonText,
+          dismissAction: dismissAction);
     }
   }
 
@@ -113,7 +134,7 @@ class AppUpdates {
       return null;
     }
     return AppVersionStatus._(
-      appVersion: _getCleanVersion(packageInfo.version),
+      appVersion: _getCleanVersion(forceAppVersion ?? packageInfo.version),
       storeVersion:
           _getCleanVersion(forceAppVersion ?? jsonObj['results'][0]['version']),
       storeLink: jsonObj['results'][0]['trackViewUrl'],
@@ -173,7 +194,7 @@ class AppUpdates {
     }
 
     return AppVersionStatus._(
-      appVersion: _getCleanVersion(packageInfo.version),
+      appVersion: _getCleanVersion(forceAppVersion ?? packageInfo.version),
       storeVersion: _getCleanVersion(forceAppVersion ?? storeVersion),
       storeLink: uri.toString(),
       releaseNotes: releaseNotes,
@@ -189,22 +210,22 @@ class AppUpdates {
   void _showUpdateDialog({
     required BuildContext context,
     required AppVersionStatus versionStatus,
-    String dialogTitle = 'Update Available',
+    String? dialogTitle,
     String? dialogText,
-    String updateButtonText = 'Update',
-    bool allowDismissal = true,
-    String dismissButtonText = 'Maybe Later',
+    String? updateButtonText,
+    bool? allowDismissal,
+    String? dismissButtonText,
     VoidCallback? dismissAction,
   }) async {
-    final dialogTitleWidget = Text(dialogTitle);
+    final dialogTitleWidget = Text(dialogTitle ?? 'Update Available');
     final dialogTextWidget = Text(
       dialogText ?? 'Update your app now to latest version and give it a spin!',
     );
 
-    final updateButtonTextWidget = Text(updateButtonText);
+    final updateButtonTextWidget = Text(updateButtonText ?? 'Update');
     updateAction() {
       _launchAppStore(versionStatus.storeLink);
-      if (allowDismissal) {
+      if (allowDismissal ?? true) {
         Navigator.of(context, rootNavigator: true).pop();
       }
     }
@@ -221,8 +242,8 @@ class AppUpdates {
             ),
     ];
 
-    if (allowDismissal) {
-      final dismissButtonTextWidget = Text(dismissButtonText);
+    if (allowDismissal ?? true) {
+      final dismissButtonTextWidget = Text(dismissButtonText ?? 'Maybe Later');
       dismissAction = dismissAction ??
           () => Navigator.of(context, rootNavigator: true).pop();
       actions.add(
@@ -240,7 +261,7 @@ class AppUpdates {
 
     await showDialog(
       context: context,
-      barrierDismissible: allowDismissal,
+      barrierDismissible: allowDismissal ?? true,
       builder: (BuildContext context) {
         return WillPopScope(
             child: Platform.isAndroid

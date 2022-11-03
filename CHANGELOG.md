@@ -1,3 +1,3 @@
-## 1.5.2 - 10/05/22
+## 1.5.3 - 03/11/22
 
-* API includes `showUpdateAlert` method. Support for iOS and Android.
+* API includes optional parameters for `showUpdateAlert` method. Support for iOS and Android.

@@ -1,4 +1,5 @@
-import 'package:app_update_alert/app_update_alert.dart';
+
+import 'package:app_update_alert/appApdateAlert.dart';
 import 'package:flutter/material.dart';
 
 
@@ -38,8 +39,6 @@ class MyHomePageState extends State<MyHomePage> {
 
     // Instantiate AppUpdate manager object with forceAppVersion
     final forceAppUpdate = AppUpdates(
-        iosPackageName: 'com.google.Vespa',
-        androidPackageName: 'com.google.android.apps.cloudconsole',
         iosAppStoreCountry: 'in',
         forceAppVersion: '1.0.1'
     );
@@ -49,9 +48,9 @@ class MyHomePageState extends State<MyHomePage> {
     const forceUpdate = true;
 
     if (forceUpdate) {
-      showUpdateDialog(appUpdate);
-    } else {
       showUpdateDialog(forceAppUpdate);
+    } else {
+      showUpdateDialog(appUpdate);
     }
   }
 
