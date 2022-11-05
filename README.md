@@ -4,7 +4,7 @@
 
 [![ios support version - 13+](https://img.shields.io/badge/ios_support_version-13%2B-2ea44f)](https://)
 [![android support version - 8+](https://img.shields.io/badge/android_support_version-8%2B-2ea44f)](https://)
-![tag - v1.5.1](https://img.shields.io/badge/tag-v1.1.0-516cc4?logo=3a76b8)
+![tag - v1.5.0](https://img.shields.io/badge/tag-v1.5.0-516cc4?logo=3a76b8)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue)](#license)
 [![News - Android Weekly](https://img.shields.io/badge/News-Android_Weekly-d36f21)](https://androidweekly.net/issues/issue-326)
 [![Story - Medium](https://img.shields.io/badge/Story-Medium-2ea44f)](https://medium.com/codex/image-compresso-13dbfd0445a3)
