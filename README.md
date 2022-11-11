@@ -138,6 +138,10 @@ MACOS   - ❌ No
 WEB     - ❌ No	                  
 WINDOWS - ❌ No	                  
 ```
+
+**If you find this library useful, please consider starring this repository from the top of this page.**
+[![](https://i.imgur.com/oSLuE0e.png)](#)
+
 # Support my work
 <a href="https://www.buymeacoffee.com/bastevinod" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
